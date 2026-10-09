@@ -444,6 +444,70 @@
                 flex-direction: column;
             }
         }
+
+
+        /* =========================
+           13. DARK MODE BUTTON AND THEME
+           ========================= */
+
+        /* Style the theme button so it fits the red portfolio header. */
+        #theme-toggle {
+            border: 2px solid white;
+            border-radius: 6px;
+            padding: 8px 12px;
+            background-color: white;
+            color: #a90000;
+            font: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease,
+                        transform 0.2s ease;
+        }
+
+        #theme-toggle:hover {
+            background-color: #fbeaea;
+            transform: translateY(-2px);
+        }
+
+        #theme-toggle:focus-visible {
+            outline: 3px solid #ffcc00;
+            outline-offset: 3px;
+        }
+
+        /* These styles activate when JavaScript adds dark-mode to the body. */
+        body.dark-mode {
+            background-color: #121212;
+            color: #f5f5f5;
+        }
+
+        body.dark-mode .hero,
+        body.dark-mode .skill-card,
+        body.dark-mode .project-card,
+        body.dark-mode .about-card,
+        body.dark-mode .learning-panel,
+        body.dark-mode .documents-card,
+        body.dark-mode .animation-demo {
+            background-color: #1e1e1e;
+            color: #f5f5f5;
+        }
+
+        body.dark-mode .section-intro {
+            color: #cccccc;
+        }
+
+        body.dark-mode .project-card {
+            border-color: #444444;
+        }
+
+        body.dark-mode .tag {
+            background-color: #3a2020;
+            color: #ffdede;
+        }
+
+        body.dark-mode .contact-card {
+            background-color: #111111;
+        }
+
     </style>
 </head>
 
@@ -463,6 +527,9 @@
                 <a href="#learning">Learning</a>
                 <a href="#contact">Contact</a>
             </nav>
+
+            <!-- Clicking this button switches between light and dark themes. -->
+            <button id="theme-toggle" type="button">Dark Mode</button>
         </div>
     </header>
     <!-- HERO: a short introduction at the top of the portfolio. -->
@@ -689,6 +756,901 @@
     <footer>
         <p>&copy; 2026 Delta's Portfolio</p>
     </footer>
+
+    <!-- JavaScript makes the Dark Mode button interactive. -->
+    <script>
+        // Find the theme button by its unique HTML id.
+        const themeButton = document.getElementById("theme-toggle");
+
+        // Run this function whenever the visitor clicks the button.
+        themeButton.addEventListener("click", function () {
+            // Add dark-mode if it is missing, or remove it if it is present.
+            document.body.classList.toggle("dark-mode");
+
+            // Change the button label to describe the available action.
+            if (document.body.classList.contains("dark-mode"))<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Makes the page adapt properly to phones, tablets, and computers. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Delta | My Learning Portfolio</title>
+
+    <style>
+        /* =========================
+           1. GENERAL PAGE STYLING
+           ========================= */
+
+        /* Remove default spacing and make element sizing easier to control. */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Set the font, page background, and default text color. */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        /* Keep the main content centered and stop it becoming too wide. */
+        .container {
+            width: min(1100px, 92%);
+            margin: 0 auto;
+        }
+
+        /* =========================
+           2. HEADER AND NAVIGATION
+           ========================= */
+
+        header {
+            background-color: #a90000;
+            color: white;
+            padding: 18px 0; /* Padding adds space inside the header. */
+        }
+
+        .nav {
+            display: flex; /* Flexbox places the logo and navigation in a row. */
+            justify-content: space-between; /* Pushes them to opposite ends. */
+            align-items: center; /* Vertically aligns them in the middle. */
+            gap: 18px; /* Adds space between flex items. */
+            flex-wrap: wrap; /* Lets items wrap on smaller screens. */
+        }
+.pdf-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .pdf-button {
+            display: inline-block;
+            padding: 12px 20px;
+            border: 2px solid #a90000;
+            border-radius: 8px;
+            background-color: #a90000;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .pdf-button:hover {
+            background-color: #760000;
+            border-color: #760000;
+            transform: translateY(-2px);
+        }
+
+        .download-button {
+            background-color: #fff;
+            color: #a90000;
+        }
+
+        .download-button:hover {
+            background-color: #fbeaea;
+            color: #760000;
+            border-color: #760000;
+        }
+
+        .pdf-button:focus-visible {
+            outline: 3px solid #ffcc00;
+            outline-offset: 3px;
+        }
+
+        .documents-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 28px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+            border-left: 5px solid #a90000;
+        }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex; /* Arranges navigation links side by side. */
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 10px; /* Space inside each clickable link. */
+            border-radius: 6px;
+        }
+
+        /* Pseudo-class :hover changes a link when the pointer is over it. */
+        .nav-links a:hover {
+            background-color: white;
+            color: #a90000;
+        }
+
+        /* Pseudo-class :focus gives keyboard users a visible focus indicator. */
+        .nav-links a:focus-visible,
+        .button:focus-visible,
+        .pdf-button:focus-visible {
+            outline: 3px solid #ffcc00;
+            outline-offset: 3px;
+        }
+
+        /* =========================
+           3. HERO / INTRODUCTION
+           ========================= */
+
+        .hero {
+            background-color: white;
+            padding: 60px 0; /* Adds breathing room above and below the content. */
+        }
+
+        .hero-content {
+            display: flex; /* Places the intro text and profile badge side by side. */
+            align-items: center;
+            justify-content: space-between;
+            gap: 35px;
+        }
+
+        .hero-text {
+            flex: 1; /* Allows the text section to use available space. */
+        }
+
+        .eyebrow {
+            color: #a90000;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .hero-text p {
+            max-width: 650px;
+            margin-bottom: 22px;
+        }
+
+        .profile-photo {
+            width: 170px;
+            height: 170px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 8px solid #f1caca;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #a90000;
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px; /* Padding makes the link look like a button. */
+            border-radius: 7px;
+            font-weight: bold;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        /* Pseudo-class :hover changes the button on mouse hover. */
+        .button:hover {
+            background-color: #760000;
+            transform: translateY(-2px);
+        }
+
+        /* Pseudo-class :active applies while the button is being pressed. */
+        .button:active {
+            transform: translateY(1px);
+        }
+
+        /* =========================
+           4. SHARED SECTION STYLING
+           ========================= */
+
+        section {
+            padding: 48px 0; /* Adds space inside each section, vertically. */
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .section-intro {
+            color: #555;
+            margin-bottom: 24px;
+            max-width: 750px;
+        }
+
+        /* =========================
+           5. ABOUT ME SECTION
+           ========================= */
+
+        .about-card {
+            background-color: white;
+            padding: 24px; /* Space between the text and card edges. */
+            border-left: 5px solid #a90000;
+            border-radius: 8px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+        }
+
+        /* =========================
+           6. SKILLS: CSS GRID
+           ========================= */
+
+        .skills-grid {
+            display: grid; /* Grid arranges cards in rows and columns. */
+            grid-template-columns: repeat(3, 1fr); /* Three equal-width columns. */
+            gap: 18px; /* Space between grid cards. */
+        }
+
+        .skill-card {
+            background-color: white;
+            padding: 22px;
+            border-radius: 8px;
+            border-top: 4px solid #a90000;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 8px;
+        }
+
+        /* :first-child selects an element if it is the first child of its parent. */
+        .skill-list li:first-child {
+            font-weight: bold;
+            color: #a90000;
+        }
+
+        /* :last-child selects the last list item in this list. */
+        .skill-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-list {
+            padding-left: 20px; /* Indents the list items inside the card. */
+        }
+
+        .skill-list li {
+            margin-bottom: 6px;
+        }
+
+        /* =========================
+           7. PROJECTS SECTION: GRID
+           ========================= */
+
+        .projects-grid {
+            display: grid; /* Creates a grid of project cards. */
+            grid-template-columns: repeat(2, 1fr); /* Two equal columns on wide screens. */
+            gap: 18px;
+        }
+
+        .project-card {
+            background-color: white;
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid #e3e3e3;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* A card lifts slightly when the pointer is over it. */
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.09);
+        }
+
+        .project-card h3 {
+            color: #a90000;
+            margin-bottom: 8px;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #f5dddd;
+            color: #7b0000;
+            padding: 4px 9px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 12px;
+            margin-right: 5px;
+        }
+
+        /* =========================
+           8. LEARNING JOURNEY
+           ========================= */
+
+        .learning-panel {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .learning-panel ul {
+            padding-left: 22px;
+        }
+
+        /* =========================
+           9. SPINNING CSS ANIMATION
+           ========================= */
+
+        .animation-demo {
+            display: flex; /* Places the spinner and explanation beside each other. */
+            align-items: center;
+            gap: 22px;
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            border: 6px solid #e7e7e7;
+            border-top-color: #a90000;
+            border-radius: 50%;
+            /* Runs the spin animation for one second, at a constant speed, forever. */
+            animation: spin 1s linear infinite;
+        }
+
+        /* @keyframes describes the animation's movement from start to finish. */
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Respect the visitor's setting to reduce motion where possible. */
+        @media (prefers-reduced-motion: reduce) {
+            .spinner {
+                animation-duration: 3s;
+            }
+
+            .button,
+            .project-card {
+                transition: none;
+            }
+        }
+
+        /* =========================
+           10. CONTACT SECTION
+           ========================= */
+
+        .contact-card {
+            background: #2a2a2a;
+            color: white;
+            padding: 28px;
+            border-radius: 8px;
+        }
+
+        .contact-card p {
+            margin-bottom: 16px;
+        }
+
+        /* =========================
+           11. FOOTER
+           ========================= */
+
+        footer {
+            background: #171717;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* =========================
+           12. RESPONSIVE DESIGN
+           ========================= */
+
+        /* On smaller screens, stack content and reduce the number of columns. */
+        @media (max-width: 700px) {
+            .hero-content {
+                flex-direction: column-reverse; /* Stacks the badge and intro vertically. */
+                align-items: flex-start;
+            }
+
+            .profile-photo {
+                width: 120px;
+                height: 120px;
+                align-self: center;
+            }
+
+            .pdf-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .pdf-button {
+                text-align: center;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens. */
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr; /* One project card per row on small screens. */
+            }
+        }
+
+        @media (max-width: 450px) {
+            .skills-grid {
+                grid-template-columns: 1fr; /* One skill card per row on very small screens. */
+            }
+
+            .animation-demo {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+
+        /* =========================
+           13. DARK MODE BUTTON AND THEME
+           ========================= */
+
+        /* Style the theme button so it fits the red portfolio header. */
+        #theme-toggle {
+            border: 2px solid white;
+            border-radius: 6px;
+            padding: 8px 12px;
+            background-color: white;
+            color: #a90000;
+            font: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease,
+                        transform 0.2s ease;
+        }
+
+        #theme-toggle:hover {
+            background-color: #fbeaea;
+            transform: translateY(-2px);
+        }
+
+        #theme-toggle:focus-visible {
+            outline: 3px solid #ffcc00;
+            outline-offset: 3px;
+        }
+
+        /* These styles activate when JavaScript adds dark-mode to the body. */
+        body.dark-mode {
+            background-color: #121212;
+            color: #f5f5f5;
+        }
+
+        body.dark-mode .hero,
+        body.dark-mode .skill-card,
+        body.dark-mode .project-card,
+        body.dark-mode .about-card,
+        body.dark-mode .learning-panel,
+        body.dark-mode .documents-card,
+        body.dark-mode .animation-demo {
+            background-color: #1e1e1e;
+            color: #f5f5f5;
+        }
+
+        body.dark-mode .section-intro {
+            color: #cccccc;
+        }
+
+        body.dark-mode .project-card {
+            border-color: #444444;
+        }
+
+        body.dark-mode .tag {
+            background-color: #3a2020;
+            color: #ffdede;
+        }
+
+        body.dark-mode .contact-card {
+            background-color: #111111;
+        }
+
+        /* =========================
+           14. MOBILE NAVIGATION MENU
+           ========================= */
+
+        /* Hidden on desktop; shown on small screens below. */
+        .menu-toggle {
+            display: none;
+            border: 2px solid white;
+            border-radius: 6px;
+            padding: 6px 12px;
+            background-color: white;
+            color: #a90000;
+            font: inherit;
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+
+        .menu-toggle:focus-visible {
+            outline: 3px solid #ffcc00;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 700px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            /* Keep the menu hidden until the visitor opens it. */
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 8px;
+                padding-top: 12px;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER: site title and navigation links. -->
+    <header>
+        <div class="container nav">
+            <div class="logo">CYNTHIA SAKAWA</div>
+
+            <!-- Button used to open and close navigation on small screens. -->
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="main-navigation">☰</button>
+
+            <nav class="nav-links" id="main-navigation" aria-label="Main navigation">
+                <!-- These links jump to sections lower down the same page. -->
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#documents">Documents</a>
+                <a href="#learning">Learning</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <!-- Clicking this button switches between light and dark themes. -->
+            <button id="theme-toggle" type="button">Dark Mode</button>
+        </div>
+    </header>
+    <!-- HERO: a short introduction at the top of the portfolio. -->
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <p class="eyebrow">My learning portfolio</p>
+                    <h1>Hello, I'm Delta.</h1>
+                    <p>
+                        I'm learning programming step by step, with a focus on Python,
+                        JavaScript, web development, and building practical projects.
+                        I like understanding what each part of the code does, not just
+                        copying it.
+                    </p>
+                    <a class="button" href="#projects">Explore my projects</a>
+                </div>
+
+                <!-- Placeholder initials: replace these with a photo or your preferred text. -->
+                
+<img src="my passport.jpg" alt="Delta's photo" class="profile-photo">
+            </div>
+        </section>
+
+        <!-- DOCUMENTS: visitors can view or download your PDF certificate. -->
+        <section id="documents">
+            <div class="container">
+                <div class="documents-card">
+                    <h2 class="section-title">My Certificate</h2>
+                    <p class="section-intro">
+                        View my certificate in your browser or download a copy to your device.
+                    </p>
+                    <div class="pdf-actions">
+
+    <!-- Button to view the certificate -->
+    <a href="./my_documents/plp%20certificte.pdf"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="pdf-button view-button">
+        View PLP Certificate
+    </a>
+
+    <!-- Button to download the certificate -->
+    <a href="./my_documents/plp%20certificte.pdf"
+       download="plp certificte.pdf"
+       class="pdf-button download-button">
+        Download PLP Certificate
+    </a>
+
+</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT: summary based on topics and projects discussed in our conversations. -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-intro">
+                    A work in progress: learning by building, testing, and improving.
+                </p>
+
+                <div class="about-card">
+                    <p>
+                        I'm developing my skills in Python and web technologies.
+                        My learning topics include functions, loops, conditions,
+                        classes and objects, HTML, CSS layouts, and interactive
+                        web pages. I prefer practical examples and clear,
+                        step-by-step explanations.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS: Grid demonstrates display:grid, columns, gaps, and card padding. -->
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">What I'm Learning</h2>
+                <p class="section-intro">
+                    These are learning areas, not a claim that I have mastered every item.
+                </p>
+
+                <div class="skills-grid">
+                    <article class="skill-card">
+                        <h3>Python</h3>
+                        <ul class="skill-list">
+                            <li>Variables and data types</li>
+                            <li>if / else conditions</li>
+                            <li>Loops and functions</li>
+                            <li>Classes and objects</li>
+                        </ul>
+                    </article>
+
+                    <article class="skill-card">
+                        <h3>HTML & CSS</h3>
+                        <ul class="skill-list">
+                            <li>HTML page structure</li>
+                            <li>Padding and spacing</li>
+                            <li>Flexbox and Grid</li>
+                            <li>Pseudo-classes and animation</li>
+                        </ul>
+                    </article>
+
+                    <article class="skill-card">
+                        <h3>Web Development</h3>
+                        <ul class="skill-list">
+                            <li>JavaScript fundamentals</li>
+                            <li>Frontend and backend concepts</li>
+                            <li>APIs and servers</li>
+                            <li>Git and GitHub practice</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS: These describe projects discussed previously; update their status as needed. -->
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">Projects & Ideas</h2>
+                <p class="section-intro">
+                    Examples of project ideas and development work I've explored.
+                </p>
+
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <h3>FoodShare</h3>
+                        <p>
+                            A food-sharing concept intended to connect people who have
+                            extra food with people who need it. Features explored include
+                            nearby matching, alerts, and food photos.
+                        </p>
+                        <span class="tag">Social impact</span>
+                        <span class="tag">Web development</span>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Land Guardian</h3>
+                        <p>
+                            A land-degradation reporting concept involving photos,
+                            descriptions, location information, and suggestions for
+                            responding to reports.
+                        </p>
+                        <span class="tag">Environment</span>
+                        <span class="tag">Hackathon idea</span>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Python Trading Research</h3>
+                        <p>
+                            Experimenting with Python-based market data analysis and
+                            simple technical indicators. Any results need careful
+                            testing and do not guarantee future trading performance.
+                        </p>
+                        <span class="tag">Python</span>
+                        <span class="tag">Data analysis</span>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>HTML & CSS Practice</h3>
+                        <p>
+                            Building small web pages to learn layout, spacing,
+                            interactive states, and animations while practicing
+                            how HTML and CSS work together.
+                        </p>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- LEARNING JOURNEY: a short list of practical learning goals. -->
+        <section id="learning">
+            <div class="container">
+                <h2 class="section-title">My Learning Journey</h2>
+
+                <div class="learning-panel">
+                    <ul>
+                        <li>Understand the basics before moving to more advanced code.</li>
+                        <li>Practice by writing and running small programs.</li>
+                        <li>Learn how frontend pages communicate with backend services.</li>
+                        <li>Build projects, test them, and improve them over time.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ANIMATION DEMO: this spinning circle demonstrates @keyframes and animation. -->
+        <section id="animation">
+            <div class="container">
+                <h2 class="section-title">CSS Animation Demo</h2>
+                <p class="section-intro">
+                    The circle spins because CSS applies an animation repeatedly.
+                </p>
+
+                <div class="animation-demo">
+                    <div class="spinner" role="img" aria-label="A spinning CSS circle"></div>
+                    <p>
+                        The <code>@keyframes spin</code> rule changes rotation from
+                        <code>0deg</code> to <code>360deg</code>. The animation lasts
+                        one second and repeats infinitely.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT: no personal email or phone number has been added. -->
+        <section id="contact">
+            <div class="container">
+                <div class="contact-card">
+                    <h2 class="section-title">Contact</h2>
+                    <p>
+                        Want to add your real contact details or links to your GitHub
+                        projects? Edit this section with the information you choose to share.
+                    </p>
+                    <a class="button" href="#about">Back to the top</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER: closing line at the bottom of the page. -->
+    <footer>
+        <p>&copy; 2026 Delta's Portfolio</p>
+    </footer>
+
+    <!-- JavaScript powers the saved theme preference and mobile menu. -->
+    <script>
+        // =========================
+        // 1. DARK MODE WITH localStorage
+        // =========================
+
+        // Find the Dark Mode button.
+        const themeButton = document.getElementById("theme-toggle");
+
+        // Apply a theme and keep the button text in sync with it.
+        function applyTheme(theme) {
+            if (theme === "dark") {
+                document.body.classList.add("dark-mode");
+                themeButton.textContent = "Light Mode";
+            } else {
+                document.body.classList.remove("dark-mode");
+                themeButton.textContent = "Dark Mode";
+            }
+        }
+
+        // Read the visitor's saved theme. Use light mode if nothing is saved.
+        const savedTheme = localStorage.getItem("theme");
+        applyTheme(savedTheme || "light");
+
+        // When clicked, switch themes and save the choice in the browser.
+        themeButton.addEventListener("click", function () {
+            if (document.body.classList.contains("dark-mode")) {
+                applyTheme("light");
+                localStorage.setItem("theme", "light");
+            } else {
+                applyTheme("dark");
+                localStorage.setItem("theme", "dark");
+            }
+        });
+
+        // =========================
+        // 2. MOBILE NAVIGATION MENU
+        // =========================
+
+        // Find the mobile menu button and the navigation links.
+        const menuButton = document.getElementById("menu-toggle");
+        const navigation = document.getElementById("main-navigation");
+
+        // Toggle the menu open or closed when the button is clicked.
+        menuButton.addEventListener("click", function () {
+            const isOpen = navigation.classList.toggle("open");
+
+            // Keep accessibility attributes and the symbol up to date.
+            menuButton.setAttribute("aria-expanded", isOpen);
+            menuButton.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation menu" : "Open navigation menu"
+            );
+            menuButton.textContent = isOpen ? "✕" : "☰";
+        });
+
+        // Close the mobile menu after a navigation link is selected.
+        navigation.addEventListener("click", function (event) {
+            if (event.target.closest("a")) {
+                navigation.classList.remove("open");
+                menuButton.setAttribute("aria-expanded", "false");
+                menuButton.setAttribute("aria-label", "Open navigation menu");
+                menuButton.textContent = "☰";
+            }
+        });
+    </script>
+
+</body>
+</html> 
+    </script>
 
 </body>
 </html>
